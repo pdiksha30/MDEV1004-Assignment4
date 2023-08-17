@@ -1,3 +1,9 @@
+/*
+File: index.ts
+Student Name: Diksha patel , Namrata Savaliya
+StudentId: 200540067, 200548688
+Date: Aug 17, 2023
+ */
 import jwt from 'jsonwebtoken';
 import db from '../Config/db';
 
