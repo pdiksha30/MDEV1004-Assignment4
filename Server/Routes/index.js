@@ -7,6 +7,9 @@ const express_1 = __importDefault(require("express"));
 let router = express_1.default.Router();
 const passport_1 = __importDefault(require("passport"));
 const movie_1 = require("../Controllers/movie");
+router.get('/', function (req, res, next) {
+    res.render('index', { title: 'Express' });
+});
 router.get('/list', passport_1.default.authenticate('jwt', { session: false }), (req, res, next) => (0, movie_1.DisplayMovieList)(req, res, next));
 router.get('/find/:id', passport_1.default.authenticate('jwt', { session: false }), (req, res, next) => (0, movie_1.DisplayMovieByID)(req, res, next));
 router.post('/add', passport_1.default.authenticate('jwt', { session: false }), (req, res, next) => (0, movie_1.AddMovie)(req, res, next));

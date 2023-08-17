@@ -156,24 +156,24 @@ export function AddMovie(req: Request, res: Response, next: NextFunction): void
 {
     try
     {
-        let genres = SanitizeArray(req.body.genres);
-        let directors = SanitizeArray(req.body.directors);
-        let writers = SanitizeArray(req.body.writers);
-        let actors = SanitizeArray(req.body.actors);
-    
+        let genres =  SanitizeArray((req.body.genres as string));
+        let directors =  SanitizeArray((req.body.directors as string));
+        let writers =  SanitizeArray((req.body.writers as string));
+        let actors =  SanitizeArray((req.body.actors as string));
         let movie = new Movie({
-           movieID: req.body.movieID,
-           title: req.body.title,
-           studio: req.body.studio,
-           genres: genres,
-           directors: directors,
-           writers: writers,
-           actors: actors,
-           length: req.body.length,
-           year: req.body.year,
-           shortDescription: req.body.shortDescription,
-           mpaRating: req.body.mpaRating,
-           criticsRating: req.body.criticsRating
+            movieID: req.body.movieID,
+            title: req.body.title,
+            studio: req.body.studio,
+            genres: genres,
+            directors: directors,
+            writers: writers,
+            actors: actors,
+            length: req.body.length,
+            year: req.body.year,
+            shortDescription : req.body.shortDescription,
+            mpaRating: req.body.mpaRating,
+            posterLink: req.body.posterLink,
+            criticsRating: req.body.criticsRating
         });
     
         Movie.create(movie)
@@ -206,25 +206,25 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
     try
     {
         let id = req.params.id;
-        let genres = SanitizeArray(req.body.genres);
-        let directors = SanitizeArray(req.body.directors);
-        let writers = SanitizeArray(req.body.writers);
-        let actors = SanitizeArray(req.body.actors);
-    
+        let genres =  SanitizeArray((req.body.genres as string));
+        let directors =  SanitizeArray((req.body.directors as string));
+        let writers =  SanitizeArray((req.body.writers as string));
+        let actors =  SanitizeArray((req.body.actors as string));
         let movieToUpdate = new Movie({
-           _id: id,
-           movieID: req.body.movieID,
-           title: req.body.title,
-           studio: req.body.studio,
-           genres: genres,
-           directors: directors,
-           writers: writers,
-           actors: actors,
-           length: req.body.length,
-           year: req.body.year,
-           shortDescription: req.body.shortDescription,
-           mpaRating: req.body.mpaRating,
-           criticsRating: req.body.criticsRating
+            _id: id,
+            movieID: req.body.movieID,
+            title: req.body.title,
+            studio: req.body.studio,
+            genres: genres,
+            directors: directors,
+            writers: writers,
+            actors: actors,
+            length: req.body.length,
+            year: req.body.year,
+            shortDescription: req.body.shortDescription,
+            mpaRating: req.body.mpaRating,
+            posterLink: req.body.posterLink,
+            criticsRating: req.body.criticsRating
         });
     
         Movie.updateOne({_id: id}, movieToUpdate)
@@ -275,3 +275,4 @@ export function DeleteMovie(req: Request, res: Response, next: NextFunction): vo
         res.status(500).json({success: false, msg: "ERROR: Something Went Wrong", data: null});
     }
 }
+export default Movie;

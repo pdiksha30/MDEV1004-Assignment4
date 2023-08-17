@@ -1,8 +1,8 @@
 {
   "name": "mdev1004-m2023-ice9",
   "version": "0.0.9",
-  "description": "This is a demo project for MDEV1004 - ICE 9 - in the Summer 2023 semester at Georgian",
-  "author": "Tom Tsiliopoulos",
+  "description": "this is a demo project for MDEV1004 - ICE 9 - in the summer 2023 semester at Georgian",
+  "author": "Diksha Patel",
   "engines": {
     "node": "20.2.0",
     "npm": "9.6.6",

@@ -9,16 +9,16 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const user_1 = __importDefault(require("../Models/user"));
 const movie_1 = __importDefault(require("../Models/movie"));
 const index_1 = require("../Util/index");
-function SanitizeArray(unsanitizedValue) {
-    if (Array.isArray(unsanitizedValue)) {
-        return unsanitizedValue.map((value) => value.trim());
+function SanitizeArray(unsanitizedString) {
+    if (unsanitizedString == null || unsanitizedString == undefined) {
+        return Array();
     }
-    else if (typeof unsanitizedValue === "string") {
-        return unsanitizedValue.split(",").map((value) => value.trim());
+    let unsanitizedArray = unsanitizedString.split(',');
+    let sanitizedArray = Array();
+    for (const unsanitizedString of unsanitizedArray) {
+        sanitizedArray.push(unsanitizedString.trim());
     }
-    else {
-        return [];
-    }
+    return sanitizedArray;
 }
 function ProcessRegistration(req, res, next) {
     let newUser = new user_1.default({
@@ -127,6 +127,7 @@ function AddMovie(req, res, next) {
             year: req.body.year,
             shortDescription: req.body.shortDescription,
             mpaRating: req.body.mpaRating,
+            posterLink: req.body.posterLink,
             criticsRating: req.body.criticsRating
         });
         movie_1.default.create(movie)
@@ -169,6 +170,7 @@ function UpdateMovie(req, res, next) {
             year: req.body.year,
             shortDescription: req.body.shortDescription,
             mpaRating: req.body.mpaRating,
+            posterLink: req.body.posterLink,
             criticsRating: req.body.criticsRating
         });
         movie_1.default.updateOne({ _id: id }, movieToUpdate)
